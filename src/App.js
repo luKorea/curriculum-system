@@ -1,13 +1,12 @@
 import React, {Component} from "react";
-import Main from './components/Main';
+import LifeCycle from './components/LifeCycle';
 
 class App extends  Component{
     render() {
         return (
             <div>
-                <Main footer='这是底部的内容'>
-                    <div>这是主体内容</div>
-                </Main>
+                <span>这是首页</span>
+                <LifeCycle />
             </div>
         )
     }
