@@ -3,4 +3,6 @@ import ReactDOM from 'react-dom';
 import App from "./App";
 import './static/index.less';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import store from './store';
+
+ReactDOM.render(<App store={store} />, document.getElementById('root'));

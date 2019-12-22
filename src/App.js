@@ -1,12 +1,10 @@
-import React, {Component} from "react";
-import Banner from "./components/Banner";
+import React, {Component} from 'react';
+import UserInfo from "./components/UserInfo";
 
-class App extends  Component{
+class App extends Component {
     render() {
         return (
-            <div>
-                <Banner />
-            </div>
+            <UserInfo store={this.props.store}/>
         )
     }
 }
