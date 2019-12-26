@@ -7,19 +7,19 @@ const CONFIG = require('./config'),
 const express = require('express'),
     app = express();
 app.listen(CONFIG.PORT, () => {
-    console.log(`THE WEB SERVICE IS CREATED SUCCESSFULLY AND IS LISTENING TO THE PORT：${CONFIG.PORT}`);
+    console.log(`THE WEB SERVICE IS CREATED SUCCESSFULLY AND IS LISTENING TO THE PORT：http://localhost:${CONFIG.PORT}`);
 });
 
 /*-MIDDLE WARE-*/
 //=>实现CROS跨域的中间件
-// app.use((req, res, next) => {
-//     const {ALLOW_ORIGIN, CREDENTIALS, HEADERS, ALLOW_METHODS} = CONFIG.CROS;
-//     res.header("Access-Control-Allow-Origin", ALLOW_ORIGIN);
-//     res.header("Access-Control-Allow-Credentials", CREDENTIALS);
-//     res.header("Access-Control-Allow-Headers", HEADERS);
-//     res.header("Access-Control-Allow-Methods", ALLOW_METHODS);
-//     req.method === 'OPTIONS' ? res.send('CURRENT SERVICES SUPPORT CROSS DOMAIN REQUESTS!') : next();
-// });
+app.use((req, res, next) => {
+    const {ALLOW_ORIGIN, CREDENTIALS, HEADERS, ALLOW_METHODS} = CONFIG.CROS;
+    res.header("Access-Control-Allow-Origin", ALLOW_ORIGIN);
+    res.header("Access-Control-Allow-Credentials", CREDENTIALS);
+    res.header("Access-Control-Allow-Headers", HEADERS);
+    res.header("Access-Control-Allow-Methods", ALLOW_METHODS);
+    req.method === 'OPTIONS' ? res.send('CURRENT SERVICES SUPPORT CROSS DOMAIN REQUESTS!') : next();
+});
 
 //=>实现SESSION操作的中间件
 const session = require('express-session');

@@ -19,8 +19,7 @@ function add_temp_store(req, res) {
 
 route.post('/login', (req, res) => {
     let {name, password} = req.body || {};
-    //=>把秘密二次加密：因为注册的时候，存储到JSON中的密码是经过二次加密的，所以我们登录验证的时候也需要把密码二次加密，只有这样才会和JSON中的匹配
-    password = password.substr(4, 24).split('').reverse().join('');
+    console.log(name, password);
 
     //=>req.personalDATA 之前读取的PERSONAL中的信息：登录校验就是把用户传递的信息到总数据中查找，找到就代表登录成功...
     const item = req.personalDATA.find(item => {
@@ -55,11 +54,8 @@ route.post('/register', (req, res) => {
         name: '',
         email: '',
         phone: '',
-        password: '8376ac810bb9f231d28fcf1f'
+        password: ''
     };
-    //=>把用户传递的密码二次加密
-    req.body.password = req.body.password.substr(4, 24).split('').reverse().join('');
-
     //=>把用户传递的信息替换用户模型中的信息，此时personInfo就是要新增加用户的全部信息
     personInfo = {...personInfo, ...req.body};
 

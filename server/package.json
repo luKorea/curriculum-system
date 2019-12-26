@@ -1,10 +1,10 @@
 {
-  "name": "KETANG-ADMIN",
+  "name": "currcuilum-server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start_server": "node index.js"
+    "start": "node index.js"
   },
   "license": "ISC",
   "dependencies": {
