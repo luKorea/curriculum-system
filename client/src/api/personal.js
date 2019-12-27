@@ -1,11 +1,13 @@
 import axios from './index';
-import md5 from 'blueimp-md5';
 
 // 验证是否登录
 export let checkLogin = () => axios.get('/personal/login');
 
 // 登录
 export let login = (payload) => axios.post('/personal/login', payload);
+
+// 注册
+export let register = (payload) => axios.post('/personal/register', payload);
 
 // 退出登录
 export let layout = () => axios.get("/personal/out");

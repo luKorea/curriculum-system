@@ -1,20 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
-import { Form, Icon, Input, Button, Modal, } from 'antd';
+import { Form, Icon, Input, Button } from 'antd';
 import {login} from '../../api/personal';
+import acion from '../../store/action';
 
-
-function ModalError() {
-    const modal = Modal.error({
-        title: '登录失败',
-        content: `用户名或密码错误请重新登录`,
-    });
-    setTimeout(() => {
-        modal.destroy();
-    },  2000);
-}
-
+import {ModalError} from '../../components/ModalError';
 
 
 class Login extends Component {
@@ -25,8 +16,10 @@ class Login extends Component {
                 let {name, password} = values;
                 let result = await login({name, password});
                 if (parseFloat(result.code) === 0) {
+                    // 执行更新redux中的数据
+                    this.props.getUserInfo();
                     this.props.history.go(-1);
-                } else {ModalError();}
+                } else {ModalError('登录失败', '请重新输入用户名和密码');}
             }
         });
     };
@@ -74,4 +67,4 @@ class Login extends Component {
         );
     }
 }
-export default withRouter(connect()(Form.create()(Login)));
+export default withRouter(connect(null, acion.personal)(Form.create()(Login)));

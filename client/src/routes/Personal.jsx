@@ -20,14 +20,22 @@ class Personal extends Component {
         }
     }
 
+    // 验证是否登录
     async componentDidMount() {
         let {code} = await checkLogin(),
             isLogin = parseFloat(code) === 0;
         this.setState({isLogin});
     }
 
+    // 如果当前组件之前没有彻底在页面中移除（本组件内容在子组件中切换），每一次走的是更新的流程，而不是重新挂载的流程
+    async componentWillReceiveProps() {
+        let {code} = await checkLogin(),
+            isLogin = parseFloat(code) === 0;
+        this.setState({isLogin});
+    }
+
     render() {
-        return <section>
+        return <section className='personal-box'>
             <Switch>
                 <Route path='/personal/info' render={() => {
                     if (this.state.isLogin) return <Info/>;

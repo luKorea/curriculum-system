@@ -1,15 +1,21 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import {Route, Switch, Redirect} from 'react-router-dom';
+
+import List from './Course/List';
+import Details from './Course/Details';
+
+import '../static/css/course.less';
 
 class Home extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
-        return (<div>这是首页</div>);
+        return <section className="course-box">
+            <Switch>
+                <Route path='/course' component={List}/>
+                <Route path='/course/details' component = {Details}/>
+            </Switch>
+        </section>
     }
 }
 
-export default connect()(Home);
+export default Home;
