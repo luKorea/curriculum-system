@@ -5,10 +5,6 @@ import {withRouter} from 'react-router-dom';
 
 class Tip extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (<div className='tip'>
             <Alert

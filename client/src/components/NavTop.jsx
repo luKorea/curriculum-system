@@ -3,22 +3,32 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import {Icon, Menu, Dropdown} from 'antd';
 
-const menu = (
-    <Menu>
-        <Menu.Item key="0">全部课程</Menu.Item><Menu.Divider/>
-        <Menu.Item key="1">REACT课程</Menu.Item><Menu.Divider/>
-        <Menu.Item key="2">VUE课程</Menu.Item><Menu.Divider/>
-        <Menu.Item key="3">小程序课程</Menu.Item>
-    </Menu>
-);
+import action from '../store/action';
 
 class NavTop extends Component {
 
-    constructor(props) {
-        super(props);
-    }
+    showList = ev => {
+        let {key, item: {props: {type}}} = ev;
+        if (key) {
+            this.props.getListInfo({
+                page: 1,
+                type,
+                flag: 'replace'
+            })
+        }
+    };
 
     render() {
+
+        const menu = (
+            <Menu onClick={this.showList}>
+                <Menu.Item key="0" type='all'>全部课程</Menu.Item><Menu.Divider/>
+                <Menu.Item key="1" type="react">REACT课程</Menu.Item><Menu.Divider/>
+                <Menu.Item key="2" type='vue'>VUE课程</Menu.Item><Menu.Divider/>
+                <Menu.Item key="3" type='xiaochengxu'>小程序课程</Menu.Item>
+            </Menu>
+        );
+
         return <header className='header-nav-box'>
             {/*首页导航*/}
             <div className="home-box">
@@ -33,4 +43,4 @@ class NavTop extends Component {
     }
 }
 
-export default withRouter(connect()(NavTop));
+export default withRouter(connect(null, action.course)(NavTop));

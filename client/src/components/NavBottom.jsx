@@ -5,11 +5,6 @@ import {Icon} from 'antd';
 
 
 class NavBottom extends Component {
-
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return <footer className='footer-nav-box'>
             <NavLink to='/course'><Icon type="home" /><span>首页</span></NavLink>

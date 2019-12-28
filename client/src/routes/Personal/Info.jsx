@@ -9,11 +9,6 @@ import action  from "../../store/action";
 
 class Info extends Component {
 
-    constructor(props) {
-        super(props);
-
-    }
-
     componentWillMount() {
         let {baseInfo, getUserInfo} = this.props;
         // eslint-disable-next-line no-unused-expressions

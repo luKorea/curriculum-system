@@ -31,7 +31,7 @@ class App extends Component {
                               <Route path={'/course'} component={Home}/>
                               <Route path={'/mycourse'} component={MyCourse}/>
                               <Route path={'/personal'} component={Personal}/>
-                              <Redirect to={'/course'}/>
+                              <Redirect  to={'/course'}/>
                           </Switch>
                       </main>
                       {/*footer*/}
